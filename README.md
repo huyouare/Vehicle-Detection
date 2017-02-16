@@ -21,7 +21,7 @@
 ##### References:
 
 https://classroom.udacity.com/nanodegrees/nd013/
-https://github.com/nhiddink/CarND_P5_Vehicle_Detection_and_Tracking
+https://github.com/nhiddink/CarND_P5_Vehicle_Detection_and_Tracking  
 https://github.com/ksakmann/CarND-Vehicle-Detection
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -44,7 +44,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 ![alt text][image1]
 
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`). Extracting features was straightforward.
+I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`). The below example shows HOG features extracted from grayscale. For the classification pipeline, I ended up using the L channel from the HLS color space. I also used 9 orientations, 8 pixels per cell, and 2 cells per block. The parameters were chosen from a mix of experimentation by manual grid search, default suggested parameters, and from viewing the reference materials. Extracting features was straightforward.
 
 ![alt text][image2]
 
@@ -67,7 +67,11 @@ I started by inspecting the minimum and maximum X and Y values manually by obser
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Reducing the color channel to use only L in HLS, and using a smaller bounds for X and Y in sliding windows helped to optimize performance. I also chose a larger size of HOG pixels per cell, and decided to only use one size of sliding window. From the example results, the pipeline seems to work great.
+Reducing the color channel to use only L in HLS, and using a smaller bounds for X and Y in sliding windows helped to optimize performance. I also chose a larger size of HOG pixels per cell, and decided to only use one size of sliding window. 
+
+As described below, the positions of positive detections are recorded. These are used to create a heatmap based on the occurrence by pixel. Then, resulting boxes are drawn according to a threshold value of overlapping detections. In this case, 3 was used as the final threshold value. This value was obtained through experimentation after achieving dense detections from the sliding window search. 
+
+From the example results, the pipeline seems to work quite well.
 
 ![alt text][image4]
 ---
