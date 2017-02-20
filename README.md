@@ -50,7 +50,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters, using roughly a grid search where I changed the parameters by factors of 2. It was after verifying the result visually, and after verifying the accuracy and run time of running the HOG parameters in classification did I arrive at my final choice. It was also influenced by the parameters chosen in the course and reference projects.
+I tried various combinations of parameters, using roughly a grid search where I changed the parameters by factors of 2. After trying different color spaces, I found that the HLS color space worked best, particularly while using the L channel. Using more than 9 orientations had little effect on the result, and using more than 2 cells per block provided worse results. Using a value of 9 pixels per cell improved the results from 16. It was after verifying the result visually, and after verifying the accuracy and run time of running the HOG parameters in classification did I arrive at my final choice. It was also influenced by the parameters chosen in the course and reference projects.
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
